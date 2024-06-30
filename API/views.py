@@ -8,7 +8,7 @@ from django.core.paginator import Paginator
 from blog.models import Post
 from rest_framework.authtoken.models import Token
 from rest_framework.decorators import api_view, permission_classes
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 from rest_framework import status
 
@@ -17,6 +17,7 @@ from rest_framework import status
 
 @csrf_exempt
 @api_view(['POST'])
+@permission_classes([AllowAny])
 def register(request):
     if request.method == 'POST':
         data = request.data
@@ -30,6 +31,7 @@ def register(request):
 
 @csrf_exempt
 @api_view(['POST'])
+@permission_classes([AllowAny])
 def user_login(request):
     if request.method == 'POST':
         data = request.data
@@ -53,7 +55,7 @@ def user_logout(request):
 
 
 # CRUD Operations
-@csrf_exempt
+
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def create_post(request):
@@ -75,7 +77,7 @@ def create_post(request):
 def list_posts(request):
     query = request.GET.get('q')
     if query:
-        posts = Post.objects.filter(Q(title__icontains=query) | Q(content__icontains=query)).order_by('-publication_date')
+        posts = Post.objects.filter(Q(title__icontains=query) | Q(content__icontains(query))).order_by('-publication_date')
     else:
         posts = Post.objects.all().order_by('-publication_date')
 
@@ -93,7 +95,7 @@ def read_post(request, post_id):
     post_data = {'title': post.title, 'content': post.content, 'author': post.author.username , 'publication_date': post.publication_date}
     return JsonResponse(post_data)
 
-@csrf_exempt
+
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def update_post(request, post_id):
@@ -112,7 +114,7 @@ def update_post(request, post_id):
             return JsonResponse({'message': str(e)}, status=status.HTTP_400_BAD_REQUEST)
     return JsonResponse({'message': 'Invalid request method'}, status=status.HTTP_400_BAD_REQUEST)
 
-@csrf_exempt
+
 @api_view(['DELETE'])
 @permission_classes([IsAuthenticated])
 def delete_post(request, post_id):
