@@ -39,7 +39,7 @@ This Django application is a simple blog system that allows users to register, c
 
 1. **Clone the repository:**
    ```bash
-   git clone <repository_url>
+   git clone https://github.com/vishnu-c-b/SIMPLE-BLOG
    cd django-blog-app
    ```
 2. **Navigate to the project directory:**
