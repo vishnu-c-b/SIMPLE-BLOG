@@ -138,3 +138,26 @@ Follow these steps to interact with the API using Postman:
 - Django ORM for database interactions
 - Token-based authentication
 - Thorough documentation for each API endpoint
+
+## Assumptions and Design Decisions
+
+- **Database Optimization:**
+
+  - **Indexing:** Implemented indexing on frequently queried fields such as post titles and content in MySQL to improve query performance.
+
+  - **SQLite Usage:** Used SQLite for development purposes due to its lightweight nature and ease of setup. MySQL is assumed for production due to its robustness and scalability.
+
+- **Content Delivery Network (CDN):**
+
+  - **Static and Media Files:** Utilized a CDN (Content Delivery Network) to distribute static assets like CSS, JavaScript, and media files (images, videos) to improve load times and reduce latency for users accessing the blog globally.
+
+  - **CDN Consideration:** Ensured that the application architecture allows for easy integration with a CDN service to optimize content delivery.
+
+- **Security Enhancements:**
+
+  - **HTTPS Implementation:** Configured the application to use HTTPS for secure communication to protect user data and credentials during transmission.
+
+  - **Django’s Built-in Security Features:** Leveraged Django's built-in security features such as CSRF protection, password hashing, and user authentication to safeguard against common web vulnerabilities
+    .
+
+  - **Authorization and Access Control:** Ensured that API endpoints requiring authentication enforce proper authorization checks to restrict access to authorized users only.
