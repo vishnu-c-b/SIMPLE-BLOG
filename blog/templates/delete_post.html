@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Delete Post{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <h2>Delete Post</h2>
+        <p>Are you sure you want to delete the post titled "{{ post.title }}"?</p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Delete</button>
+            <a href="{% url 'read_post' post.id %}" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

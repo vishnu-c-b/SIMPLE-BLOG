@@ -1,0 +1,69 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="{% url 'list_posts' %}">BloG!!</a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarNav"
+    aria-controls="navbarNav"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <form
+          class="form-inline my-2 my-lg-0"
+          method="get"
+          action="{% url 'list_posts' %}"
+        >
+          <input
+            class="form-control mr-sm-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+            name="q"
+            value="{{ request.GET.q }}"
+          />
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+            Search
+          </button>
+        </form>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      {% if user.is_authenticated %}
+      <li class="nav-item">
+        <a class="nav-link shaded-link mr-2" href="{% url 'create_post' %}"
+          >Create Post</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link shaded-link mr-2" href="{% url 'my_posts' %}"
+          >My Posts</a
+        >
+      </li>
+      <li class="nav-item">
+        <span class="navbar-text"> Welcome, {{ user.username }}! </span>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link btn btn-outline-danger mr-2"
+          href="{% url 'logout' %}"
+        >
+          Logout</a
+        >
+      </li>
+      {% else %}
+      <li class="nav-item">
+        <a class="nav-link shaded-link mr-2" href="{% url 'login' %}">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link shaded-link" href="{% url 'register' %}">Register</a>
+      </li>
+      {% endif %}
+    </ul>
+  </div>
+</nav>

@@ -1,0 +1,67 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+}
+
+h1, h2, h3 {
+    color: #343a40;
+}
+
+.navbar {
+    margin-bottom: 20px;
+}
+
+.navbar-brand {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.footer {
+    background-color: #343a40;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px 0;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-title a {
+    color: #343a40;
+    text-decoration: none;
+}
+
+.card-title a:hover {
+    text-decoration: underline;
+}
+
+.pagination {
+    margin-top: 20px;
+}
+
+
+
+
+
+.shaded-link {
+    color: #333; /* Dark grey text color */
+}
+
+.shaded-link:hover {
+    color: #777; /* Light grey text color on hover */
+}
+
+.btn-outline-danger {
+    color: #dc3545; /* Red text color */
+    border-color: #dc3545; /* Red border color */
+}
+
+.btn-outline-danger:hover {
+    color: #fff; /* White text color on hover */
+    background-color: #dc3545; /* Red background color on hover */
+    border-color: #dc3545; /* Red border color on hover */
+}
