@@ -33,8 +33,8 @@ h3 {
 }
 
 .card-title a {
-  color: #343a40;
-  text-decoration: none;
+  color: #0080ff;
+  text-decoration: underline;
 }
 
 .card-title a:hover {
@@ -50,11 +50,11 @@ h3 {
 }
 
 .shaded-link:hover {
-  color: #777;
+  color: #ff0000;
 }
 
 .btn-outline-danger {
-  color: #dc3545;
+  color: #f3552ee7;
   border-color: #dc3545;
 }
 
